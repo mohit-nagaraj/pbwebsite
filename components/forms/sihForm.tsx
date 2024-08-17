@@ -37,8 +37,7 @@ const SIHMultiStepForm: React.FC = () => {
   } = useForm({
     defaultValues: formData,
   });
-  const onSubmit: SubmitHandler<any> = async (data : any) => {
-
+  const onSubmit: SubmitHandler<any> = async (data: any) => {
     setFormData({ ...formData, ...data });
     if (step < 3) {
       setStep(step + 1);
@@ -48,7 +47,7 @@ const SIHMultiStepForm: React.FC = () => {
         alert("Please complete the reCAPTCHA");
         return;
       }
-  
+
       try {
         let response = await fetch("/api/registration/sih", {
           method: "POST",
@@ -179,7 +178,7 @@ const SIHMultiStepForm: React.FC = () => {
 
             <div className="mb-4">
               <label className="block mb-2">
-                Team Leader's  Email<span className="text-red-600"> * </span>
+                Team Leader's Email<span className="text-red-600"> * </span>
               </label>
               <input
                 {...register("team_info.team_leader.email", {
@@ -220,127 +219,130 @@ const SIHMultiStepForm: React.FC = () => {
             </div>
 
             <div className="mb-4">
-                  <label className="block">
-                    Team Leader's Role in Team<span className="text-red-600"> * </span>
-                  </label>
-                  <input
-                    {...register(`team_info.team_leader.role`, {
-                      required: "Role is required",
-                    })}
-                    name={`team_info.team_leader.role`}
-                    type="text"
-                    placeholder="Enter role in team"
-                    className="w-full px-4 py-2 border rounded-md bg-transparent form-input focus:border-0 focus:outline-offset-0 focus:outline-green-500"
-                  />
-                  {errors.team_info?.team_leader?.role && (
-                    <p className="text-red-500">
-                      {errors.team_info.team_leader.role.message}
-                    </p>
-                  )}
-                </div>
+              <label className="block">
+                Team Leader's Role in Team
+                <span className="text-red-600"> * </span>
+              </label>
+              <input
+                {...register(`team_info.team_leader.role`, {
+                  required: "Role is required",
+                })}
+                name={`team_info.team_leader.role`}
+                type="text"
+                placeholder="Enter role in team"
+                className="w-full px-4 py-2 border rounded-md bg-transparent form-input focus:border-0 focus:outline-offset-0 focus:outline-green-500"
+              />
+              {errors.team_info?.team_leader?.role && (
+                <p className="text-red-500">
+                  {errors.team_info.team_leader.role.message}
+                </p>
+              )}
+            </div>
 
-                <div className="mb-4">
-                  <label className="block">
-                    Team Leader's College ID/USN
-                    <span className="text-red-600"> * </span>
-                  </label>
-                  <input
-                    {...register(`team_info.team_leader.enrollment_id`, {
-                      required: "College ID is required",
-                    })}
-                    name={`team_info.team_leader.enrollment_id`}
-                    pattern="[1][D][S][1-2][0-9][A-Z][A-Z][0-9]{3}"
-                    type="text"
-                    placeholder="Enter college ID"
-                    className="w-full px-4 py-2 border rounded-md bg-transparent form-input focus:border-0 focus:outline-offset-0 focus:outline-green-500"
-                  />
-                  {errors.team_info?.team_leader?.enrollment_id && (
-                    <p className="text-red-500">
-                      {errors.team_info.team_leader.enrollment_id.message}
-                    </p>
-                  )}
-                </div>
+            <div className="mb-4">
+              <label className="block">
+                Team Leader's College ID/USN
+                <span className="text-red-600"> * </span>
+              </label>
+              <input
+                {...register(`team_info.team_leader.enrollment_id`, {
+                  required: "College ID is required",
+                })}
+                name={`team_info.team_leader.enrollment_id`}
+                pattern="[1][D][S][1-2][0-9][A-Z][A-Z][0-9]{3}"
+                type="text"
+                placeholder="Enter college ID"
+                className="w-full px-4 py-2 border rounded-md bg-transparent form-input focus:border-0 focus:outline-offset-0 focus:outline-green-500"
+              />
+              {errors.team_info?.team_leader?.enrollment_id && (
+                <p className="text-red-500">
+                  {errors.team_info.team_leader.enrollment_id.message}
+                </p>
+              )}
+            </div>
 
-                <div className="mb-4">
-                  <label className="block">
-                    Team Leader's Course/Department<span className="text-red-600"> * </span>
-                  </label>
-                  <select
-                    {...register(`team_info.team_leader.course`, {
-                      required: "Course is required",
-                    })}
-                    name={`team_info.team_leader.course`}
-                    className="w-full px-4 py-2 border rounded-md bg-transparent form-input focus:outline-none focus:border-2 focus:border-green-500"
+            <div className="mb-4">
+              <label className="block">
+                Team Leader's Course/Department
+                <span className="text-red-600"> * </span>
+              </label>
+              <select
+                {...register(`team_info.team_leader.course`, {
+                  required: "Course is required",
+                })}
+                name={`team_info.team_leader.course`}
+                className="w-full px-4 py-2 border rounded-md bg-transparent form-input focus:outline-none focus:border-2 focus:border-green-500"
+              >
+                {courses.map((course) => (
+                  <option
+                    className="w-full px-4 py-2 border bg-black t rounded-md form-input focus:outline-none focus:border-2 focus:border-green-500"
+                    value={course}
                   >
-                    {courses.map((course) => (
-                      <option
-                        className="w-full px-4 py-2 border bg-black t rounded-md form-input focus:outline-none focus:border-2 focus:border-green-500"
-                        value={course}
-                      >
-                        {course}
-                      </option>
-                    ))}
-                  </select>
-                  {errors.team_info?.team_leader?.course && (
-                    <p className="text-red-500">
-                      {errors.team_info.team_leader.course.message}
-                    </p>
-                  )}
-                </div>
+                    {course}
+                  </option>
+                ))}
+              </select>
+              {errors.team_info?.team_leader?.course && (
+                <p className="text-red-500">
+                  {errors.team_info.team_leader.course.message}
+                </p>
+              )}
+            </div>
 
-                <div className="mb-4">
-                  <label className="block">
-                    Team Leaders's Year of Study<span className="text-red-600"> * </span>
-                  </label>
-                  <select
-                    {...register(`team_info.team_leader.year_of_study`, {
-                      required: "Year of study is required",
-                    })}
-                    name={`team_info.team_leader.year_of_study`}
-                    className="w-full px-4 py-2 border rounded-md bg-transparent form-input focus:border-0 focus:outline-offset-0 focus:outline-green-500"
+            <div className="mb-4">
+              <label className="block">
+                Team Leaders's Year of Study
+                <span className="text-red-600"> * </span>
+              </label>
+              <select
+                {...register(`team_info.team_leader.year_of_study`, {
+                  required: "Year of study is required",
+                })}
+                name={`team_info.team_leader.year_of_study`}
+                className="w-full px-4 py-2 border rounded-md bg-transparent form-input focus:border-0 focus:outline-offset-0 focus:outline-green-500"
+              >
+                {years.map((year) => (
+                  <option
+                    className="w-full px-4 py-2 border rounded-md bg-black form-input focus:border-0 focus:outline-offset-0 focus:outline-green-500"
+                    value={year}
                   >
-                    {years.map((year) => (
-                      <option
-                        className="w-full px-4 py-2 border rounded-md bg-black form-input focus:border-0 focus:outline-offset-0 focus:outline-green-500"
-                        value={year}
-                      >
-                        {year}
-                      </option>
-                    ))}
-                  </select>
-                  {errors.team_info?.team_leader?.year_of_study && (
-                    <p className="text-red-500">
-                      {errors.team_info.team_leader.year_of_study.message}
-                    </p>
-                  )}
-                </div>
+                    {year}
+                  </option>
+                ))}
+              </select>
+              {errors.team_info?.team_leader?.year_of_study && (
+                <p className="text-red-500">
+                  {errors.team_info.team_leader.year_of_study.message}
+                </p>
+              )}
+            </div>
 
-                <div className="mb-4">
-                  <label className="block">
-                    Team Leader's Branch<span className="text-red-600"> * </span>
-                  </label>
-                  <select
-                    {...register(`team_info.team_leader.branch`, {
-                      required: "Branch is required",
-                    })}
-                    name={`team_info.team_leader.branch`}
-                    className="w-full px-4 py-2 border rounded-md bg-transparent form-input focus:border-0 focus:outline-offset-0 focus:outline-green-500"
+            <div className="mb-4">
+              <label className="block">
+                Team Leader's Branch<span className="text-red-600"> * </span>
+              </label>
+              <select
+                {...register(`team_info.team_leader.branch`, {
+                  required: "Branch is required",
+                })}
+                name={`team_info.team_leader.branch`}
+                className="w-full px-4 py-2 border rounded-md bg-transparent form-input focus:border-0 focus:outline-offset-0 focus:outline-green-500"
+              >
+                {branches.map((branch) => (
+                  <option
+                    className="w-50 text-wrap px-4 py-2 border rounded-md bg-black form-input focus:border-0 focus:outline-offset-0 focus:outline-green-500"
+                    value={branch}
                   >
-                    {branches.map((branch) => (
-                      <option
-                        className="w-50 text-wrap px-4 py-2 border rounded-md bg-black form-input focus:border-0 focus:outline-offset-0 focus:outline-green-500"
-                        value={branch}
-                      >
-                        {branch}
-                      </option>
-                    ))}
-                  </select>
-                  {errors.team_info?.team_leader?.branch && (
-                    <p className="text-red-500">
-                      {errors.team_info.team_leader.branch.message}
-                    </p>
-                  )}
-                </div>
+                    {branch}
+                  </option>
+                ))}
+              </select>
+              {errors.team_info?.team_leader?.branch && (
+                <p className="text-red-500">
+                  {errors.team_info.team_leader.branch.message}
+                </p>
+              )}
+            </div>
 
             <button
               type="submit"

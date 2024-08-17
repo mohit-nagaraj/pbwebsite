@@ -1,10 +1,10 @@
 "use client";
-import React, { useEffect, useState } from 'react';
-import Login from '../../components/Login';
-import Signup from '../../components/Signup';
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '@/Firebase';
-import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from "react";
+import Login from "../../components/Login";
+import Signup from "../../components/Signup";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "@/Firebase";
+import { useRouter } from "next/navigation";
 export default function Home() {
   const [isLogin, setIsLogin] = useState(true);
   const router = useRouter();
@@ -12,7 +12,7 @@ export default function Home() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        router.push('/');
+        router.push("/");
       }
     });
   });
@@ -21,13 +21,13 @@ export default function Home() {
       <div className="flex space-x-4 mb-6">
         <button
           onClick={() => setIsLogin(true)}
-          className={`p-3 rounded-md font-semibold ${isLogin ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-800'}`}
+          className={`p-3 rounded-md font-semibold ${isLogin ? "bg-green-500 text-white" : "bg-gray-200 text-gray-800"}`}
         >
           Login
         </button>
         <button
           onClick={() => setIsLogin(false)}
-          className={`p-3 rounded-md font-semibold ${!isLogin ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-800'}`}
+          className={`p-3 rounded-md font-semibold ${!isLogin ? "bg-green-500 text-white" : "bg-gray-200 text-gray-800"}`}
         >
           Signup
         </button>
@@ -36,4 +36,3 @@ export default function Home() {
     </div>
   );
 }
-

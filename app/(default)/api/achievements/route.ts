@@ -23,21 +23,21 @@ export async function POST(request: Request) {
     const internship = formData.get("internship") as string;
     const companyPosition = formData.get("companyPosition") as string;
     const achievements = JSON.parse(
-      formData.get("achievements") as string
+      formData.get("achievements") as string,
     ) as string[];
     const image = formData.get("image") as File;
 
     // Check if a person with the same name already exists
     const existingMembersQuery = query(
       collection(db, "achievements"),
-      where("Name", "==", name)
+      where("Name", "==", name),
     );
     const querySnapshot = await getDocs(existingMembersQuery);
 
     if (!querySnapshot.empty) {
       return NextResponse.json(
         { error: `A member with the name ${name} already exists.` },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -45,7 +45,7 @@ export async function POST(request: Request) {
     if (!image) {
       return NextResponse.json(
         { error: "Image file is required" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -80,13 +80,13 @@ export async function POST(request: Request) {
       console.error("Error details:", error.message);
       return NextResponse.json(
         { error: "An error occurred", details: error.message },
-        { status: 500 }
+        { status: 500 },
       );
     } else {
       console.error("Unknown error:", error);
       return NextResponse.json(
         { error: "An unknown error occurred" },
-        { status: 500 }
+        { status: 500 },
       );
     }
   }
@@ -102,7 +102,7 @@ export async function GET() {
       (doc: DocumentSnapshot<DocumentData>) => ({
         id: doc.id,
         ...doc.data(),
-      })
+      }),
     );
     const members = membersRaw.map((member: any) => {
       return {
@@ -127,13 +127,13 @@ export async function GET() {
           error: "An error occurred while fetching members",
           details: error.message,
         },
-        { status: 500 }
+        { status: 500 },
       );
     } else {
       console.error("Unknown error:", error);
       return NextResponse.json(
         { error: "An unknown error occurred while fetching members" },
-        { status: 500 }
+        { status: 500 },
       );
     }
   }

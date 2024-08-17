@@ -41,7 +41,6 @@ const RecruitmentForm: React.FC = () => {
       return;
     }
 
-    
     try {
       let response = await fetch("/api/registration/recruitment", {
         method: "POST",

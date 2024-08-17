@@ -89,7 +89,7 @@ export default function AchievementsPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    try{
+    try {
       const formData = new FormData();
       formData.append("image", newAchievement.image || "");
       formData.append("email", newAchievement.email || "");
@@ -98,7 +98,10 @@ export default function AchievementsPage() {
       formData.append("portfolio", newAchievement.portfolio || "");
       formData.append("internship", newAchievement.internship || "");
       formData.append("companyPosition", newAchievement.companyPosition || "");
-      formData.append("achievements", JSON.stringify(newAchievement.achievements || []));
+      formData.append(
+        "achievements",
+        JSON.stringify(newAchievement.achievements || []),
+      );
       const response = await axios.post("/api/achievements", formData);
       setAchievers((prev) => [...prev, response.data]);
       setIsModalOpen(false);

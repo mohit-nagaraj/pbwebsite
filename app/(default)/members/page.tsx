@@ -1,13 +1,13 @@
-import Members from "@/components/Members"
+import Members from "@/components/Members";
 
 export const metadata = {
-    title: 'Members',
-    description: 'Members page',
-}
+  title: "Members",
+  description: "Members page",
+};
 export default function Events() {
-    return (
-        <>
-            <Members />
-        </>
-    )
+  return (
+    <>
+      <Members />
+    </>
+  );
 }

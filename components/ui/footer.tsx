@@ -1,6 +1,6 @@
-import Link from 'next/link'
-import React from 'react';
-import Logo from './logo';
+import Link from "next/link";
+import React from "react";
+import Logo from "./logo";
 
 export default function Footer() {
   return (
@@ -10,13 +10,39 @@ export default function Footer() {
       </div>
       <div className="mx-auto max-w-screen-xl text-center">
         <ul className="flex flex-wrap justify-center items-center mb-6 text-white">
-          <li><Link href="/" className="mr-4 hover:underline md:mr-6">Home</Link></li>
-          <li><Link href="/events" className="mr-4 hover:underline md:mr-6">Events</Link></li>
-          <li><Link href="/leads" className="mr-4 hover:underline md:mr-6">Leads</Link></li>
-          <li><Link href="/members" className="mr-4 hover:underline md:mr-6">Members</Link></li>
-          <li><Link href="/achievements" className="mr-4 hover:underline md:mr-6">Achievements</Link></li>
+          <li>
+            <Link href="/" className="mr-4 hover:underline md:mr-6">
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link href="/events" className="mr-4 hover:underline md:mr-6">
+              Events
+            </Link>
+          </li>
+          <li>
+            <Link href="/leads" className="mr-4 hover:underline md:mr-6">
+              Leads
+            </Link>
+          </li>
+          <li>
+            <Link href="/members" className="mr-4 hover:underline md:mr-6">
+              Members
+            </Link>
+          </li>
+          <li>
+            <Link href="/achievements" className="mr-4 hover:underline md:mr-6">
+              Achievements
+            </Link>
+          </li>
         </ul>
-        <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">Made with ❤️ by <Link href="/" className="hover:underline">Point Blank</Link>. All Rights Reserved.</span>
+        <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+          Made with ❤️ by{" "}
+          <Link href="/" className="hover:underline">
+            Point Blank
+          </Link>
+          . All Rights Reserved.
+        </span>
       </div>
     </footer>
   );

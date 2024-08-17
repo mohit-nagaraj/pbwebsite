@@ -15,7 +15,7 @@ async function verifyRecaptcha(token: string) {
         secret: secretKey || "",
         response: token,
       }),
-    }
+    },
   );
   const data = await response.json();
   return data.success;

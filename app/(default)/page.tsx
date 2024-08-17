@@ -12,16 +12,18 @@ import Link from "next/link";
 import SparklesText from "@/components/magicui/sparkles-text";
 import EventComponent from "@/components/eventcards";
 import Leads from "@/components/leads";
-import Achievements from '@/components/achievements';
+import Achievements from "@/components/achievements";
 import Founder from "@/components/founder";
-
 
 export default function Home() {
   return (
     <>
       <Hero />
       <div className="flex flex-col justify-center items-center py-10 px-5 mb-20">
-        <SparklesText text="Upcoming Events" className="text-4xl font-bold text-center text-gray-200 mb-4" /> 
+        <SparklesText
+          text="Upcoming Events"
+          className="text-4xl font-bold text-center text-gray-200 mb-4"
+        />
         <Link href="/sihregistration">
           <Image
             src={"/images/sih.png"}
@@ -46,7 +48,7 @@ export default function Home() {
       <Domains />
       <Activities />
       <Founder />
-      <Achievements/>
+      <Achievements />
       <EventComponent />
       <Leads />
     </>

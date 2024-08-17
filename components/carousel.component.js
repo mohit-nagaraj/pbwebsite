@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import { useState } from "react";
 
@@ -28,7 +27,7 @@ export default function Carousel({ slides }) {
         }}
       >
         {slides.map((s) => {
-          return <Image src={s} alt="" className="items-center"/>;
+          return <Image src={s} alt="" className="items-center" />;
         })}
       </div>
 

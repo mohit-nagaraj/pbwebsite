@@ -1,16 +1,14 @@
-import Leads from "@/components/leads"
-
+import Leads from "@/components/leads";
 
 export const metadata = {
-    title: 'Leads',
-    description: 'Leads page',
-}
+  title: "Leads",
+  description: "Leads page",
+};
 
 export default function leads() {
-
-    return (
-        <>
-        <Leads/>
-        </>
-    )
+  return (
+    <>
+      <Leads />
+    </>
+  );
 }
